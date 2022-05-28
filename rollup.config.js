@@ -1,4 +1,7 @@
 import styles from "rollup-plugin-styles";
+import { terser } from "rollup-plugin-terser";
+
+const name = 'replitNpmTemplate';
 
 export default [
   {
@@ -6,7 +9,28 @@ export default [
     output: [
       {
         format: "esm",
-        file: "dist/joy.module.js",
+        name: name,
+        file: "dist/" + name + ".module.js",
+        indent: "\t"
+      },
+    ],
+    plugins: [styles()],
+  },
+  
+  {
+    input: "src/index.js",
+    output: [
+      {
+        format: "umd",
+        name: name,
+        file: "dist/" + name + ".js",
+        indent: "\t",
+      },
+      {
+        format: "cjs",
+        name: name,
+        file: "dist/" + name + ".cjs",
+        indent: "\t",
       },
     ],
     plugins: [styles()],
@@ -16,28 +40,12 @@ export default [
     input: "src/index.js",
     output: [
       {
-        format: "esm",
-        file: "dist/joy.module.js",
-      },
-    ],
-    plugins: [styles()],
-  },
-  {
-    input: "src/index.js",
-    output: [
-      {
         format: "umd",
-        name: "joy",
-        file: "dist/joy.js",
-        indent: "\t",
-      },
-      {
-        format: "cjs",
-        name: "joy",
-        file: "dist/joy.cjs",
+        name: name,
+        file: "dist/" + name + ".min.js",
         indent: "\t",
       },
     ],
-    plugins: [styles()],
+    plugins: [styles(), terser()],
   },
 ];

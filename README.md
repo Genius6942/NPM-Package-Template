@@ -1,40 +1,29 @@
-# joystick
+# replit-npm-template
 
-### A joystick for the web
+### A template for an npm package, built for the replit template jam 2022
 
 ---
 
 # Installation:
 
-### npm
+### npm install
 
 ```
-npm install joystick
+npm install replit-npm-template
 ```
 
 ```js
-import { Joystick } from "@fezzle/joystick";
+import * as replitNpmTemplate from "replit-npm-template";
 ```
 
 ### script tag
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@fezzle/joystick"></script>
+<script src="https://cdn.jsdelivr.net/npm/replit-npm-template"></script>
 ```
 
 
 # Use:
 ```js
-// create a new joystick instance
-const joystick = new Joystick();
-
-// add it to the dom tree
-document.body.appendChild(joystick.dom);
-
-// position it on the bottom left
-joystick.style.cssText = "position: fixed; bottom: 30px; left:30px;";
-
-joystick.on("move", (angle) => {
-  console.log('Joystick angle:', angle);
-}
+replitNpmTemplate.changeBackgroundColor('red');
 ```
